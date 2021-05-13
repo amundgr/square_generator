@@ -6,11 +6,15 @@
 # needed, moves generated files to its respective folders and cleans
 # the root folder when done. It works, I am happy.  
 
-if [ -d "simulation" ]; then
+# Quality of life aliases:
+# alias s="./wrapper.sh sim"
+# alias b="./wrapper.sh build"
+
+if [ ! -d "simulation" ]; then
     mkdir simulation
 fi
 
-if [ -d "synthesis" ]; then
+if [ ! -d "synthesis" ]; then
     mkdir synthesis
 fi
 
@@ -32,9 +36,6 @@ elif [ "$1" = "build" ]; then
     apio build
     mv hardware.* synthesis
     rm *.v
-elif [ "$1" = "alias" ]; then
-    alias sim="./wrapper.sh sim"
-    alias build="./wrapper.sh build"
 else
     echo "Unknown argument..."
 fi
